@@ -1,0 +1,174 @@
+---
+const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/ventures', label: 'Ventures' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/work-with-me', label: 'Work With Me' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const socials = [
+  { href: 'https://www.instagram.com/sandraweise/', label: 'Instagram', icon: 'instagram' },
+  { href: 'https://www.facebook.com/sandra.weise', label: 'Facebook', icon: 'facebook' },
+  { href: 'https://www.linkedin.com/in/sandraweise/', label: 'LinkedIn', icon: 'linkedin' },
+  { href: 'https://www.youtube.com/@sandraweise', label: 'YouTube', icon: 'youtube' },
+];
+---
+
+<footer class="footer bg-espresso">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="/images/logo-dark.png" alt="Sandra Weise" class="footer__logo-img" />
+        <p class="footer__tagline">Entrepreneur. Speaker. Life Coach.<br />A catalyst for seekers of authenticity.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <span class="footer__nav-title">Navigate</span>
+        {navLinks.map((link) => (
+          <a href={link.href} class="footer__nav-link">{link.label}</a>
+        ))}
+      </nav>
+
+      <div class="footer__connect">
+        <span class="footer__nav-title">Connect</span>
+        <div class="footer__socials">
+          {socials.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__social-link"
+              aria-label={social.label}
+            >
+              {social.label}
+            </a>
+          ))}
+        </div>
+        <a href="mailto:sandra@sandraweise.com" class="footer__email">sandra@sandraweise.com</a>
+      </div>
+    </div>
+
+    <div class="footer__divider"></div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; {currentYear} Sandra Weise. All rights reserved.</p>
+      <p class="footer__credit">St. Paul, Minnesota</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--space-xl) 0 var(--space-lg);
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer__logo-img {
+    height: 40px;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .footer__tagline {
+    font-size: 0.9375rem;
+    color: rgba(250, 246, 240, 0.6);
+    line-height: 1.7;
+  }
+
+  .footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer__nav-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer__nav-link {
+    font-size: 0.9375rem;
+    color: rgba(250, 246, 240, 0.6);
+    transition: color 0.2s ease;
+  }
+
+  .footer__nav-link:hover {
+    color: var(--citrine);
+  }
+
+  .footer__connect {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer__socials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer__social-link {
+    font-size: 0.9375rem;
+    color: rgba(250, 246, 240, 0.6);
+    transition: color 0.2s ease;
+  }
+
+  .footer__social-link:hover {
+    color: var(--citrine);
+  }
+
+  .footer__email {
+    font-size: 0.875rem;
+    color: var(--citrine);
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer__email:hover {
+    opacity: 0.8;
+  }
+
+  .footer__divider {
+    height: 1px;
+    background: rgba(250, 246, 240, 0.1);
+    margin: 2.5rem 0 1.5rem;
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__copy,
+  .footer__credit {
+    font-size: 0.8125rem;
+    color: rgba(250, 246, 240, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

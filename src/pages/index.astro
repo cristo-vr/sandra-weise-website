@@ -1,0 +1,382 @@
+---
+import Base from '../layouts/Base.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sandra Weise',
+  url: 'https://sandraweise.com',
+  jobTitle: 'Entrepreneur, Speaker, Life Coach',
+  description: 'Purpose-driven entrepreneur, speaker, and life coach helping people transition from autopilot to authenticity.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'St. Paul',
+    addressRegion: 'MN',
+    addressCountry: 'US',
+  },
+  sameAs: [
+    'https://www.instagram.com/sandraweise/',
+    'https://www.linkedin.com/in/sandraweise/',
+    'https://www.youtube.com/@sandraweise',
+  ],
+};
+---
+
+<Base
+  title="Home"
+  description="Sandra Weise — purpose-driven entrepreneur, speaker, and life coach based in St. Paul, Minnesota. Helping people transition from autopilot to authenticity."
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bubbles" aria-hidden="true">
+      <div class="bubble b1"></div>
+      <div class="bubble b2"></div>
+      <div class="bubble b3"></div>
+      <div class="bubble b4"></div>
+      <div class="bubble b5"></div>
+    </div>
+    <div class="container hero__content">
+      <p class="section-label hero__label">Entrepreneur &middot; Speaker &middot; Life Coach</p>
+      <h1 class="hero__title">A Catalyst for Seekers<br />of <span class="hero__accent">Authenticity</span></h1>
+      <p class="hero__subtitle">Helping people transition from autopilot to authenticity — through coaching, conversation, and building things that matter.</p>
+      <div class="hero__actions">
+        <a href="/work-with-me" class="btn btn--accent">Work With Me</a>
+        <a href="/podcast" class="btn btn--secondary btn--on-dark">Listen to the Podcast</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="section bg-cream">
+    <div class="container about-teaser">
+      <div class="about-teaser__image">
+        <div class="about-teaser__placeholder" aria-label="Sandra Weise portrait">
+          <span>SW</span>
+        </div>
+      </div>
+      <div class="about-teaser__content">
+        <p class="section-label">About Sandra</p>
+        <h2>Twenty years of asking<br />better questions.</h2>
+        <p>Two decades as a life coach. Cancer survivor. Legislative advocate. Restaurant owner. Serial entrepreneur. Sandra has spent her life learning how to ask the questions that actually move people forward — and building the things that help them stay there.</p>
+        <a href="/about" class="btn btn--secondary">Read My Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ventures Preview -->
+  <section class="section bg-linen">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-lg);">
+        <p class="section-label">What I'm Building</p>
+        <h2>Ventures rooted in purpose.</h2>
+        <p class="mx-auto">Five businesses, one mission — to raise the vibration of the world through authentic connection, transformation, and community.</p>
+      </div>
+
+      <div class="ventures-grid">
+        <a href="/podcast" class="venture-card venture-card--podcast">
+          <div class="venture-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </div>
+          <h3>A Better Question</h3>
+          <p>A podcast about the questions that actually change relationships — and lives.</p>
+        </a>
+
+        <a href="/ventures" class="venture-card venture-card--happy">
+          <div class="venture-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>The Happy Class</h3>
+          <p>A DIY alternative to couples counseling. Making something good even better.</p>
+        </a>
+
+        <a href="/ventures" class="venture-card venture-card--bistro">
+          <div class="venture-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Finnish Bistro</h3>
+          <p>A St. Paul community institution. Great food, great people, 25 years strong.</p>
+        </a>
+
+        <a href="/ventures" class="venture-card venture-card--resonance">
+          <div class="venture-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Resonance Den</h3>
+          <p>Crystals, meditation, and community. A sacred space for seekers.</p>
+        </a>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-lg);">
+        <a href="/ventures" class="btn btn--secondary">Explore All Ventures</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Teaser -->
+  <section class="section bg-espresso">
+    <div class="container podcast-teaser">
+      <div class="podcast-teaser__content">
+        <p class="section-label">Now Streaming</p>
+        <h2>A Better Question</h2>
+        <p>The podcast about the questions we avoid, the conversations we need, and the relationships that define our lives. New episodes weekly.</p>
+        <div class="podcast-teaser__actions">
+          <a href="/podcast" class="btn btn--accent">Browse Episodes</a>
+        </div>
+      </div>
+      <div class="podcast-teaser__player">
+        <!-- Transistor latest episode embed — replace SHOW_ID with actual show ID -->
+        <div class="podcast-teaser__embed-placeholder">
+          <p>Latest episode player loads here</p>
+          <!-- <iframe src="https://share.transistor.fm/e/SHOW_ID/latest" width="100%" height="180" frameborder="0" scrolling="no" seamless="true" style="border-radius: 16px;"></iframe> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-cream">
+    <div class="container text-center">
+      <h2>Ready to ask a better question?</h2>
+      <p class="mx-auto" style="margin-bottom: var(--space-md);">Whether you're looking for coaching, want to book Sandra as a speaker, or just want to say hello — let's connect.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/work-with-me" class="btn btn--primary">Book a Session</a>
+        <a href="/contact" class="btn btn--secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: var(--espresso);
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero__bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+  .b1 { width: 400px; height: 400px; background: var(--indigo); top: -120px; right: -100px; }
+  .b2 { width: 250px; height: 250px; background: var(--amethyst); top: 80px; right: 120px; opacity: 0.08; }
+  .b3 { width: 320px; height: 320px; background: var(--emerald); bottom: -140px; left: -100px; opacity: 0.08; }
+  .b4 { width: 180px; height: 180px; background: var(--sage); bottom: 60px; left: 80px; opacity: 0.06; }
+  .b5 { width: 120px; height: 120px; background: var(--citrine); top: 25%; left: 40%; opacity: 0.05; }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__label {
+    color: var(--sage);
+  }
+
+  .hero__title {
+    color: var(--linen);
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+
+  .hero__accent {
+    color: var(--citrine);
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: rgba(250, 246, 240, 0.65);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn--on-dark {
+    color: var(--linen);
+    border-color: rgba(250, 246, 240, 0.3);
+  }
+  .btn--on-dark:hover {
+    background: rgba(250, 246, 240, 0.1);
+    color: var(--linen);
+    border-color: rgba(250, 246, 240, 0.5);
+  }
+
+  /* About Teaser */
+  .about-teaser {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-teaser__placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-width: 400px;
+    border-radius: 2rem;
+    background: linear-gradient(135deg, var(--linen), var(--sand));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-teaser__placeholder span {
+    font-family: 'Lora', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--driftwood);
+    opacity: 0.4;
+  }
+
+  .about-teaser__content h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-teaser__content p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-teaser {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .about-teaser__placeholder {
+      max-width: 280px;
+      margin: 0 auto;
+      aspect-ratio: 1;
+    }
+
+    .about-teaser__content p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* Ventures Grid */
+  .ventures-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .venture-card {
+    display: block;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .venture-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .venture-card--podcast::before { background: var(--indigo); }
+  .venture-card--happy::before { background: var(--rose-quartz); }
+  .venture-card--bistro::before { background: var(--emerald); }
+  .venture-card--resonance::before { background: var(--amethyst); }
+
+  .venture-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(44, 29, 18, 0.1);
+  }
+
+  .venture-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .venture-card--podcast .venture-card__icon { background: rgba(61, 79, 143, 0.1); color: var(--indigo); }
+  .venture-card--happy .venture-card__icon { background: rgba(232, 180, 184, 0.2); color: var(--ruby); }
+  .venture-card--bistro .venture-card__icon { background: rgba(61, 153, 112, 0.1); color: var(--emerald); }
+  .venture-card--resonance .venture-card__icon { background: rgba(139, 109, 176, 0.1); color: var(--amethyst); }
+
+  .venture-card h3 {
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .venture-card p {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .ventures-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Podcast Teaser */
+  .podcast-teaser {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .podcast-teaser__content h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--linen);
+    margin-bottom: 1rem;
+  }
+
+  .podcast-teaser__content p {
+    color: rgba(250, 246, 240, 0.65);
+    margin-bottom: 2rem;
+  }
+
+  .podcast-teaser__embed-placeholder {
+    background: rgba(250, 246, 240, 0.06);
+    border: 1px solid rgba(250, 246, 240, 0.1);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: rgba(250, 246, 240, 0.35);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .podcast-teaser {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

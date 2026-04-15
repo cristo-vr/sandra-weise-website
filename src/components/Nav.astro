@@ -1,0 +1,230 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/ventures', label: 'Ventures' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/work-with-me', label: 'Work With Me' },
+  { href: '/contact', label: 'Contact' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="nav" id="nav">
+  <div class="nav__inner container--wide">
+    <a href="/" class="nav__logo" aria-label="Sandra Weise — Home">
+      <img src="/images/logo-light.png" alt="Sandra Weise" class="nav__logo-img" />
+    </a>
+
+    <nav class="nav__links" id="nav-links" aria-label="Main navigation">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={['nav__link', { 'nav__link--active': isActive(link.href) }]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/work-with-me" class="btn btn--accent btn--small nav__cta">Book Sandra</a>
+    </nav>
+
+    <button
+      class="nav__toggle"
+      id="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(250, 246, 240, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .nav--scrolled {
+    box-shadow: 0 2px 20px rgba(44, 29, 18, 0.08);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 72px;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .nav__logo-img {
+    height: 36px;
+    width: auto;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--citrine);
+    border-radius: 1px;
+    transition: width 0.3s ease;
+  }
+
+  .nav__link:hover {
+    color: var(--espresso);
+  }
+
+  .nav__link:hover::after {
+    width: 100%;
+  }
+
+  .nav__link--active {
+    color: var(--espresso);
+    font-weight: 600;
+  }
+
+  .nav__link--active::after {
+    width: 100%;
+  }
+
+  .nav__cta {
+    margin-left: 0.5rem;
+  }
+
+  /* Hamburger */
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    z-index: 10;
+  }
+
+  .nav__toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--espresso);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .nav__toggle {
+      display: flex;
+    }
+
+    .nav__links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      background: var(--warm-cream);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .nav__links.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav__link {
+      font-size: 1.25rem;
+    }
+
+    .nav__cta {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Scroll shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav?.classList.toggle('nav--scrolled', window.scrollY > 10);
+  });
+
+  // Mobile toggle
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+    links?.classList.toggle('is-open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  // Close on link click (mobile)
+  links?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      links.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

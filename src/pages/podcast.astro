@@ -1,0 +1,343 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Fetch episodes from Transistor RSS feed at build time
+// Replace FEED_URL with Sandra's actual Transistor RSS feed URL
+const FEED_URL = 'https://feeds.transistor.fm/a-better-question';
+let episodes: Array<{title: string; date: string; description: string; link: string; duration: string; episodeUrl: string}> = [];
+
+try {
+  const res = await fetch(FEED_URL);
+  if (res.ok) {
+    const xml = await res.text();
+    // Simple XML parsing for RSS items
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+    episodes = items.map((item) => {
+      const getTag = (tag: string) => {
+        const match = item.match(new RegExp(`<${tag}[^>]*>(?:<!\\[CDATA\\[)?(.*?)(?:\\]\\]>)?<\\/${tag}>`, 's'));
+        return match ? match[1].trim() : '';
+      };
+      const enclosureMatch = item.match(/enclosure[^>]*url="([^"]*)"/) ;
+      return {
+        title: getTag('title'),
+        date: getTag('pubDate'),
+        description: getTag('description').replace(/<[^>]*>/g, '').slice(0, 200) + '...',
+        link: getTag('link'),
+        duration: getTag('itunes:duration'),
+        episodeUrl: enclosureMatch ? enclosureMatch[1] : '',
+      };
+    });
+  }
+} catch (e) {
+  // Feed unavailable at build time — show fallback
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'PodcastSeries',
+  name: 'A Better Question',
+  description: 'The podcast about the questions we avoid, the conversations we need, and the relationships that define our lives.',
+  url: 'https://sandraweise.com/podcast',
+  author: {
+    '@type': 'Person',
+    name: 'Sandra Weise',
+  },
+  webFeed: FEED_URL,
+};
+
+function formatDate(dateStr: string): string {
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  } catch {
+    return dateStr;
+  }
+}
+---
+
+<Base
+  title="A Better Question — Podcast"
+  description="A Better Question — the podcast about the questions we avoid, the conversations we need, and the relationships that define our lives. Hosted by Sandra Weise."
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="page-hero bg-espresso">
+    <div class="container">
+      <p class="section-label">Podcast</p>
+      <h1>A Better <span class="accent">Question</span></h1>
+      <p class="page-hero__desc">The questions we avoid. The conversations we need. The relationships that define our lives.</p>
+      <div class="podcast-platforms">
+        <span class="podcast-platforms__label">Listen on:</span>
+        <a href="#" class="podcast-platform" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a href="#" class="podcast-platform" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
+        <a href="#" class="podcast-platform" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href={FEED_URL} class="podcast-platform" target="_blank" rel="noopener noreferrer">RSS Feed</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Embedded Player -->
+  <section class="section bg-linen">
+    <div class="container--narrow mx-auto" style="padding: 0 1.5rem;">
+      <h2 class="text-center" style="margin-bottom: var(--space-md);">Latest Episode</h2>
+      <!-- Replace SHOW_ID with actual Transistor show ID -->
+      <div class="player-embed">
+        <div class="player-embed__placeholder">
+          <p>Transistor player embed</p>
+          <p style="font-size: 0.8125rem; margin-top: 0.5rem;">Replace SHOW_ID in the source code with your Transistor show ID</p>
+          <!-- <iframe src="https://share.transistor.fm/e/SHOW_ID/latest" width="100%" height="180" frameborder="0" scrolling="no" seamless="true" style="border-radius: 12px;"></iframe> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episode List -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="episodes-header">
+        <h2>All Episodes</h2>
+        <p class="episodes-count">{episodes.length > 0 ? `${episodes.length} episodes` : ''}</p>
+      </div>
+
+      {episodes.length > 0 ? (
+        <div class="episodes-list">
+          {episodes.map((ep, i) => (
+            <article class="episode-card">
+              <div class="episode-card__number">{String(episodes.length - i).padStart(2, '0')}</div>
+              <div class="episode-card__content">
+                <h3 class="episode-card__title">
+                  <a href={ep.link} target="_blank" rel="noopener noreferrer">{ep.title}</a>
+                </h3>
+                <p class="episode-card__meta">
+                  <time>{formatDate(ep.date)}</time>
+                  {ep.duration && <span>&middot; {ep.duration}</span>}
+                </p>
+                <p class="episode-card__desc">{ep.description}</p>
+              </div>
+              <a href={ep.link} target="_blank" rel="noopener noreferrer" class="episode-card__play" aria-label={`Listen to ${ep.title}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="episodes-empty">
+          <div class="episodes-empty__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </div>
+          <h3>Coming soon.</h3>
+          <p>A Better Question is in production. New episodes are on the way — follow Sandra on social media to be the first to know when we launch.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-espresso">
+    <div class="container text-center">
+      <h2>Never miss an episode.</h2>
+      <p class="mx-auto" style="margin-bottom: var(--space-md); color: rgba(250,246,240,0.65);">Subscribe on your favorite platform and get every episode the moment it drops.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#" class="btn btn--accent">Subscribe on Spotify</a>
+        <a href="#" class="btn btn--secondary btn--on-dark">Subscribe on Apple Podcasts</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+  }
+
+  .page-hero h1 {
+    color: var(--linen);
+    max-width: 600px;
+  }
+
+  .page-hero__desc {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    color: rgba(250, 246, 240, 0.6);
+    max-width: 560px;
+  }
+
+  .accent { color: var(--citrine); }
+
+  .btn--on-dark {
+    color: var(--linen);
+    border-color: rgba(250, 246, 240, 0.3);
+  }
+  .btn--on-dark:hover {
+    background: rgba(250, 246, 240, 0.1);
+    color: var(--linen);
+    border-color: rgba(250, 246, 240, 0.5);
+  }
+
+  /* Platform Links */
+  .podcast-platforms {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .podcast-platforms__label {
+    font-size: 0.8125rem;
+    color: rgba(250, 246, 240, 0.4);
+    font-weight: 500;
+  }
+
+  .podcast-platform {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sage);
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(156, 175, 136, 0.3);
+    border-radius: 50px;
+    transition: all 0.2s ease;
+  }
+
+  .podcast-platform:hover {
+    background: rgba(156, 175, 136, 0.1);
+    border-color: var(--sage);
+    color: var(--linen);
+  }
+
+  /* Player Embed */
+  .player-embed__placeholder {
+    background: rgba(44, 29, 18, 0.04);
+    border: 1px dashed var(--sand);
+    border-radius: 0.75rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  /* Episodes */
+  .episodes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+  }
+
+  .episodes-count {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .episodes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .episode-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .episode-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(44, 29, 18, 0.08);
+  }
+
+  .episode-card__number {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--sand);
+    min-width: 2.5rem;
+    text-align: center;
+  }
+
+  .episode-card__title {
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .episode-card__title a {
+    transition: color 0.2s ease;
+  }
+
+  .episode-card__title a:hover {
+    color: var(--indigo);
+  }
+
+  .episode-card__meta {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .episode-card__desc {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .episode-card__play {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--indigo);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .episode-card__play:hover {
+    background: var(--lapis);
+    transform: scale(1.05);
+  }
+
+  /* Empty State */
+  .episodes-empty {
+    text-align: center;
+    padding: var(--space-xl) 0;
+  }
+
+  .episodes-empty__icon {
+    color: var(--sand);
+    margin-bottom: 1.5rem;
+  }
+
+  .episodes-empty h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .episodes-empty p {
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    .episode-card {
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+    }
+
+    .episode-card__number {
+      display: none;
+    }
+  }
+</style>

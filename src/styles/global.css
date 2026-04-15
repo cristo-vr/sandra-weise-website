@@ -1,0 +1,258 @@
+/* ============================================
+   Sandra Weise — Brand Guide v2 Design Tokens
+   ============================================ */
+
+:root {
+  /* ── Foundation: Earth Tones (60%) ── */
+  --linen: #F3EDE4;
+  --sand: #C8B89A;
+  --warm-cream: #FAF6F0;
+  --driftwood: #A68B6B;
+  --espresso: #2C1D12;
+  --charcoal: #36454F;
+
+  /* ── Botanical Middle (25%) ── */
+  --sage: #9CAF88;
+  --moss: #6B7F5E;
+  --forest: #2D5A27;
+  --olive: #7C8B5E;
+
+  /* ── Gemstone Accents (15%) ── */
+  --amethyst: #8B6DB0;
+  --indigo: #3D4F8F;
+  --emerald: #3D9970;
+  --ruby: #A4343A;
+  --rose-quartz: #E8B4B8;
+  --lapis: #2B4570;
+  --citrine: #D4A843;
+
+  /* ── Utility ── */
+  --text-dark: #2C1D12;
+  --text-muted: #7A7068;
+  --text-light: #FAF6F0;
+  --border-subtle: rgba(44, 29, 18, 0.08);
+
+  /* ── Spacing ── */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+
+  /* ── Container ── */
+  --container-max: 1100px;
+  --container-wide: 1280px;
+  --container-narrow: 720px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4 {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+h1 { font-size: clamp(2.5rem, 5.5vw, 3.75rem); line-height: 1.1; }
+h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.625rem); }
+h4 { font-size: clamp(1.1rem, 2vw, 1.375rem); letter-spacing: -0.02em; }
+
+p {
+  max-width: 65ch;
+  line-height: 1.75;
+  font-size: 1.0625rem;
+}
+
+/* ── Section Label (overline) ── */
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Container ── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+/* ── Section Spacing ── */
+.section {
+  padding: var(--space-xl) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-lg) 0;
+  }
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: var(--espresso);
+  color: var(--text-light);
+}
+
+.btn--primary:hover {
+  background: var(--charcoal);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(44, 29, 18, 0.2);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--espresso);
+  border: 1.5px solid var(--espresso);
+}
+
+.btn--secondary:hover {
+  background: var(--espresso);
+  color: var(--text-light);
+}
+
+.btn--accent {
+  background: var(--citrine);
+  color: var(--espresso);
+}
+
+.btn--accent:hover {
+  background: #c49a38;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212, 168, 67, 0.3);
+}
+
+.btn--small {
+  padding: 0.625rem 1.5rem;
+  font-size: 0.8125rem;
+}
+
+/* ── Cards ── */
+.card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(44, 29, 18, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(44, 29, 18, 0.1);
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sand), transparent);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* ── Background Variants ── */
+.bg-cream { background: var(--warm-cream); }
+.bg-linen { background: var(--linen); }
+.bg-espresso { background: var(--espresso); color: var(--text-light); }
+.bg-charcoal { background: var(--charcoal); color: var(--text-light); }
+
+.bg-espresso .section-label,
+.bg-charcoal .section-label { color: var(--sage); }
+
+.bg-espresso h1, .bg-espresso h2, .bg-espresso h3, .bg-espresso h4,
+.bg-charcoal h1, .bg-charcoal h2, .bg-charcoal h3, .bg-charcoal h4 {
+  color: var(--linen);
+}
+
+.bg-espresso p, .bg-charcoal p {
+  color: rgba(250, 246, 240, 0.7);
+}
+
+/* ── Utility ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }

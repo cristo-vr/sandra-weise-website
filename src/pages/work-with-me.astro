@@ -1,0 +1,262 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Work With Me"
+  description="Book a coaching session or speaking engagement with Sandra Weise. Twenty years of transformative life coaching and purpose-driven speaking."
+>
+  <!-- Hero -->
+  <section class="page-hero bg-espresso">
+    <div class="container">
+      <p class="section-label">Work With Me</p>
+      <h1>Let's do the <span class="accent">real work</span>.</h1>
+      <p class="page-hero__desc">Whether you need a coach, a speaker, or someone who asks the questions everyone else avoids — I'm here.</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="services-grid">
+        <!-- Coaching -->
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--amethyst">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>1-on-1 Coaching</h3>
+          <p>For people at a crossroads. You know something needs to change but you can't see it clearly yet. In our sessions, I don't give you advice — I ask the questions that help you find your own answers. Twenty years of doing this work means I know where to look.</p>
+          <ul class="service-card__features">
+            <li>Deep-dive coaching sessions</li>
+            <li>Relationship and life transitions</li>
+            <li>Purpose and direction clarity</li>
+            <li>Accountability and follow-through</li>
+          </ul>
+        </div>
+
+        <!-- Speaking -->
+        <div class="service-card">
+          <div class="service-card__icon service-card__icon--indigo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </div>
+          <h3>Speaking & Events</h3>
+          <p>Sandra speaks on authenticity, purpose-driven leadership, resilience, and the power of asking better questions. No motivational fluff. No recycled talking points. Just real talk about what it takes to build a life — and a business — that actually means something.</p>
+          <ul class="service-card__features">
+            <li>Keynotes and conference talks</li>
+            <li>Corporate workshops</li>
+            <li>Retreats and intimate events</li>
+            <li>Podcast and media appearances</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="section bg-linen" id="book">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-lg);">
+        <p class="section-label">Book a Session</p>
+        <h2>Pick a time that works for you.</h2>
+        <p class="mx-auto">Select an available slot below. Payment is collected at the time of booking to confirm your session.</p>
+      </div>
+
+      <div class="cal-embed-wrapper">
+        <!-- Cal.com embed — replace CAL_USERNAME with Sandra's Cal.com username -->
+        <div class="cal-embed__placeholder">
+          <p>Cal.com booking calendar embeds here</p>
+          <p style="font-size: 0.8125rem; margin-top: 0.5rem;">Add Cal.com embed script with Sandra's username to activate</p>
+        </div>
+        <!--
+          To activate, add this before </body> in Base.astro:
+          <script src="https://app.cal.com/embed/embed.js" async></script>
+
+          Then replace the placeholder div with:
+          <div
+            data-cal-link="SANDRA_CAL_USERNAME"
+            data-cal-config='{"theme":"light"}'
+            style="width:100%;height:600px;overflow:hidden;"
+          ></div>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-lg);">
+        <h2>What to expect.</h2>
+      </div>
+
+      <div class="expect-grid">
+        <div class="expect-item">
+          <span class="expect-number">01</span>
+          <h4>Book and pay</h4>
+          <p>Choose your session type and time. Payment is collected upfront via Stripe — this confirms your booking and respects both of our time.</p>
+        </div>
+        <div class="expect-item">
+          <span class="expect-number">02</span>
+          <h4>Show up ready</h4>
+          <p>Come with whatever is on your mind. There's no wrong way to start. I'll meet you where you are and we'll go from there.</p>
+        </div>
+        <div class="expect-item">
+          <span class="expect-number">03</span>
+          <h4>Do the work</h4>
+          <p>Our sessions are conversations, not lectures. I'll ask the questions. You'll find the answers. That's where the transformation happens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-espresso">
+    <div class="container text-center">
+      <h2>Prefer to start with a conversation?</h2>
+      <p class="mx-auto" style="margin-bottom: var(--space-md); color: rgba(250,246,240,0.65);">If you're not sure what you need yet, reach out. We'll figure it out together.</p>
+      <a href="/contact" class="btn btn--accent">Get in Touch</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+  }
+
+  .page-hero h1 {
+    color: var(--linen);
+    max-width: 600px;
+  }
+
+  .page-hero__desc {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    color: rgba(250, 246, 240, 0.6);
+    max-width: 560px;
+  }
+
+  .accent { color: var(--citrine); }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 2px 12px rgba(44, 29, 18, 0.06);
+  }
+
+  .service-card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-card__icon--amethyst { background: rgba(139, 109, 176, 0.1); color: var(--amethyst); }
+  .service-card__icon--indigo { background: rgba(61, 79, 143, 0.1); color: var(--indigo); }
+
+  .service-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .service-card p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .service-card__features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .service-card__features li {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .service-card__features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Cal.com Embed */
+  .cal-embed-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cal-embed__placeholder {
+    background: white;
+    border: 1px dashed var(--sand);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  /* What to Expect */
+  .expect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .expect-item {
+    text-align: center;
+  }
+
+  .expect-number {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--sand);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .expect-item h4 {
+    margin-bottom: 0.75rem;
+  }
+
+  .expect-item p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    .expect-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

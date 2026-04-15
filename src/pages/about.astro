@@ -1,0 +1,288 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About"
+  description="Sandra Weise — serial entrepreneur, life coach, cancer survivor, and legislative advocate. Twenty years of helping people transition from autopilot to authenticity."
+>
+  <!-- Hero -->
+  <section class="page-hero bg-espresso">
+    <div class="container">
+      <p class="section-label">About</p>
+      <h1>The story behind<br />the <span class="accent">question</span>.</h1>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section bg-cream">
+    <div class="container about-intro">
+      <div class="about-intro__image">
+        <div class="about-intro__placeholder" aria-label="Sandra Weise">
+          <span>SW</span>
+        </div>
+      </div>
+      <div class="about-intro__content">
+        <h2>I've never been good at waiting.</h2>
+        <p>I'm Sandra Weise — entrepreneur, speaker, life coach, and someone who has spent twenty years sitting across from people in the moments that matter most. The moments where they realize the life they built isn't the life they want. The moments where they decide to do something about it.</p>
+        <p>I'm based in St. Paul, Minnesota. I own a restaurant, a crystal shop, a meditation space, a podcast, and a product company. But what I really do is ask questions — the ones most people avoid — and help people build the courage to answer them honestly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey -->
+  <section class="section bg-linen">
+    <div class="container">
+      <p class="section-label">The Journey</p>
+      <h2 style="margin-bottom: var(--space-lg);">Built through fire — literally and figuratively.</h2>
+
+      <div class="timeline">
+        <div class="timeline__item">
+          <div class="timeline__marker timeline__marker--citrine"></div>
+          <div class="timeline__content">
+            <h3>Two decades of coaching</h3>
+            <p>Trained under Iyanla Vanzant on the Oprah Winfrey Network. Over twenty years of sitting with people in their most transformative moments — not fixing them, but asking the questions that help them find their own answers.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker timeline__marker--emerald"></div>
+          <div class="timeline__content">
+            <h3>Finnish Bistro</h3>
+            <p>Built a community institution in St. Paul. A restaurant that isn't just about food — it's about people. Twenty-five staff members, and Sandra has a 30-minute one-on-one with every single one of them every month. No work talk allowed. Just human connection.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker timeline__marker--ruby"></div>
+          <div class="timeline__content">
+            <h3>Legislative advocacy</h3>
+            <p>Authored SF2200 — a Minnesota bill protecting sexual assault survivors. Seven years of litigation that could have broken anyone. Instead, it became fuel for something bigger.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker timeline__marker--amethyst"></div>
+          <div class="timeline__content">
+            <h3>Cancer and comeback</h3>
+            <p>Diagnosed with follicular lymphoma. Beat it. Came back with a deeper understanding that time is the only resource that doesn't replenish — and a refusal to waste any of it.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker timeline__marker--indigo"></div>
+          <div class="timeline__content">
+            <h3>What's next</h3>
+            <p>A Better Question — the podcast. The Happy Class — the product. Resonance Den — the space. Everything Sandra has learned in twenty years of coaching, building, surviving, and transforming is now becoming something bigger than herself.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section bg-espresso">
+    <div class="container">
+      <p class="section-label">What I Believe</p>
+      <h2 style="margin-bottom: var(--space-lg);">The principles behind everything I build.</h2>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <h4>Authenticity over polish</h4>
+          <p>I'd rather be real than impressive. Every venture, every conversation, every relationship I build starts with telling the truth.</p>
+        </div>
+        <div class="value-card">
+          <h4>Make something good even better</h4>
+          <p>I'm not in the business of fixing broken things. I'm in the business of helping good people, good relationships, and good ideas become extraordinary.</p>
+        </div>
+        <div class="value-card">
+          <h4>Transformation is a practice</h4>
+          <p>Growth isn't a one-time event. It's daily. It's meditation at 5 AM. It's the monthly check-in with your team. It's the question you keep asking until you finally hear the answer.</p>
+        </div>
+        <div class="value-card">
+          <h4>Build to give it away</h4>
+          <p>Everything I'm building — every business, every product, every platform — exists so it can serve people long after I'm gone. Legacy isn't what you keep. It's what you leave.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-cream">
+    <div class="container text-center">
+      <h2>Let's work together.</h2>
+      <p class="mx-auto" style="margin-bottom: var(--space-md);">Whether you want coaching, a speaker who tells the truth, or just a conversation that matters — I'm here.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/work-with-me" class="btn btn--primary">Book a Session</a>
+        <a href="/contact" class="btn btn--secondary">Say Hello</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+  }
+
+  .page-hero h1 {
+    color: var(--linen);
+    max-width: 600px;
+  }
+
+  .accent {
+    color: var(--citrine);
+  }
+
+  /* About Intro */
+  .about-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-intro__placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-width: 360px;
+    border-radius: 2rem;
+    background: linear-gradient(135deg, var(--linen), var(--sand));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: calc(72px + 2rem);
+  }
+
+  .about-intro__placeholder span {
+    font-family: 'Lora', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--driftwood);
+    opacity: 0.4;
+  }
+
+  .about-intro__content h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-intro__content p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .about-intro {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-intro__placeholder {
+      max-width: 240px;
+      margin: 0 auto;
+      aspect-ratio: 1;
+      position: static;
+    }
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--citrine), var(--sage), var(--amethyst), var(--indigo));
+    border-radius: 2px;
+  }
+
+  .timeline__item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline__marker {
+    position: absolute;
+    left: -3rem;
+    top: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid var(--linen);
+  }
+
+  .timeline__marker--citrine { background: var(--citrine); }
+  .timeline__marker--emerald { background: var(--emerald); }
+  .timeline__marker--ruby { background: var(--ruby); }
+  .timeline__marker--amethyst { background: var(--amethyst); }
+  .timeline__marker--indigo { background: var(--indigo); }
+
+  .timeline__content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline__content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 2.5rem;
+    }
+
+    .timeline__marker {
+      left: -2.5rem;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    background: rgba(250, 246, 240, 0.06);
+    border: 1px solid rgba(250, 246, 240, 0.08);
+    border-radius: 1.5rem;
+    padding: 2rem;
+  }
+
+  .value-card h4 {
+    color: var(--citrine);
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .value-card p {
+    color: rgba(250, 246, 240, 0.6);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

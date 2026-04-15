@@ -1,0 +1,23 @@
+# Sandra Weise — sandraweise.com
+# Welcome to all crawlers, including AI models
+
+User-agent: *
+Allow: /
+
+# AI model crawlers — explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://sandraweise.com/sitemap-index.xml
