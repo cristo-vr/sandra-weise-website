@@ -28,14 +28,8 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero__bubbles" aria-hidden="true">
-      <div class="bubble b1"></div>
-      <div class="bubble b2"></div>
-      <div class="bubble b3"></div>
-      <div class="bubble b4"></div>
-      <div class="bubble b5"></div>
-    </div>
+  <section class="hero" style="background-image: url('/images/home-hero.png');">
+    <div class="hero__overlay" aria-hidden="true"></div>
     <div class="container hero__content">
       <p class="section-label hero__label">Entrepreneur &middot; Speaker &middot; Life Coach</p>
       <h1 class="hero__title">A Catalyst for Seekers<br />of <span class="hero__accent">Authenticity</span></h1>
@@ -51,9 +45,7 @@ const jsonLd = {
   <section class="section bg-cream">
     <div class="container about-teaser">
       <div class="about-teaser__image">
-        <div class="about-teaser__placeholder" aria-label="Sandra Weise portrait">
-          <span>SW</span>
-        </div>
+        <img src="/images/sandra-portrait.png" alt="Sandra Weise portrait" class="about-teaser__img" />
       </div>
       <div class="about-teaser__content">
         <p class="section-label">About Sandra</p>
@@ -125,11 +117,16 @@ const jsonLd = {
         </div>
       </div>
       <div class="podcast-teaser__player">
-        <!-- Transistor latest episode embed — replace SHOW_ID with actual show ID -->
-        <div class="podcast-teaser__embed-placeholder">
-          <p>Latest episode player loads here</p>
-          <!-- <iframe src="https://share.transistor.fm/e/SHOW_ID/latest" width="100%" height="180" frameborder="0" scrolling="no" seamless="true" style="border-radius: 16px;"></iframe> -->
-        </div>
+        <iframe
+          src="https://share.transistor.fm/e/a-better-question-with-sandra-weise/latest"
+          width="100%"
+          height="180"
+          frameborder="0"
+          scrolling="no"
+          seamless
+          title="A Better Question — Latest Episode"
+          style="border-radius: 16px; display: block; border: 0;"
+        ></iframe>
       </div>
     </div>
   </section>
@@ -154,27 +151,20 @@ const jsonLd = {
     min-height: 85vh;
     display: flex;
     align-items: center;
-    background: var(--espresso);
+    background-color: var(--espresso);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     overflow: hidden;
-    padding-top: 72px;
+    padding-top: 96px;
   }
 
-  .hero__bubbles {
+  .hero__overlay {
     position: absolute;
     inset: 0;
-    pointer-events: none;
+    background: linear-gradient(120deg, rgba(44, 29, 18, 0.88) 0%, rgba(44, 29, 18, 0.6) 55%, rgba(44, 29, 18, 0.45) 100%);
+    z-index: 1;
   }
-
-  .bubble {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.1;
-  }
-  .b1 { width: 400px; height: 400px; background: var(--indigo); top: -120px; right: -100px; }
-  .b2 { width: 250px; height: 250px; background: var(--amethyst); top: 80px; right: 120px; opacity: 0.08; }
-  .b3 { width: 320px; height: 320px; background: var(--emerald); bottom: -140px; left: -100px; opacity: 0.08; }
-  .b4 { width: 180px; height: 180px; background: var(--sage); bottom: 60px; left: 80px; opacity: 0.06; }
-  .b5 { width: 120px; height: 120px; background: var(--citrine); top: 25%; left: 40%; opacity: 0.05; }
 
   .hero__content {
     position: relative;
@@ -227,23 +217,14 @@ const jsonLd = {
     align-items: center;
   }
 
-  .about-teaser__placeholder {
+  .about-teaser__img {
     width: 100%;
     aspect-ratio: 3/4;
     max-width: 400px;
     border-radius: 2rem;
-    background: linear-gradient(135deg, var(--linen), var(--sand));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .about-teaser__placeholder span {
-    font-family: 'Lora', serif;
-    font-size: 4rem;
-    font-weight: 600;
-    color: var(--driftwood);
-    opacity: 0.4;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 12px 40px rgba(44, 29, 18, 0.12);
   }
 
   .about-teaser__content h2 {
@@ -262,10 +243,9 @@ const jsonLd = {
       text-align: center;
     }
 
-    .about-teaser__placeholder {
-      max-width: 280px;
+    .about-teaser__img {
+      max-width: 320px;
       margin: 0 auto;
-      aspect-ratio: 1;
     }
 
     .about-teaser__content p {

@@ -1,5 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// Turnstile site key: set PUBLIC_TURNSTILE_SITE_KEY in Cloudflare Pages env vars.
+// Fallback is Cloudflare's "always passes" test key so the form renders in dev.
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 ---
 
 <Base
@@ -7,8 +11,9 @@ import Base from '../layouts/Base.astro';
   description="Get in touch with Sandra Weise. Whether it's a question, an inquiry, or just to say hello."
 >
   <!-- Hero -->
-  <section class="page-hero bg-espresso">
-    <div class="container">
+  <section class="page-hero page-hero--image" style="background-image: url('/images/contact-hero.png');">
+    <div class="page-hero__overlay" aria-hidden="true"></div>
+    <div class="container page-hero__inner">
       <p class="section-label">Contact</p>
       <h1>Let's <span class="accent">connect</span>.</h1>
       <p class="page-hero__desc">Have a question, a collaboration idea, or just want to say hello? I'd love to hear from you.</p>
@@ -48,7 +53,7 @@ import Base from '../layouts/Base.astro';
           </div>
 
           <!-- Cloudflare Turnstile widget -->
-          <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="light"></div>
+          <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div>
 
           <button type="submit" class="btn btn--primary form-submit" id="submit-btn">
             <span class="submit-text">Send Message</span>
@@ -96,6 +101,30 @@ import Base from '../layouts/Base.astro';
 <style>
   .page-hero {
     padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+    position: relative;
+  }
+
+  .page-hero--image {
+    background-color: var(--espresso);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(44, 29, 18, 0.85) 0%, rgba(44, 29, 18, 0.6) 100%);
+    z-index: 1;
+  }
+
+  .page-hero__inner {
+    position: relative;
+    z-index: 2;
   }
 
   .page-hero h1 {

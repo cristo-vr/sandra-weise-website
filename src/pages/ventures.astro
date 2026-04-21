@@ -7,8 +7,9 @@ import Base from '../layouts/Base.astro';
   description="Sandra Weise's ventures — Finnish Bistro, A Better Question podcast, The Happy Class, Resonance Den, and life coaching and speaking."
 >
   <!-- Hero -->
-  <section class="page-hero bg-espresso">
-    <div class="container">
+  <section class="page-hero page-hero--image" style="background-image: url('/images/ventures-hero.png');">
+    <div class="page-hero__overlay" aria-hidden="true"></div>
+    <div class="container page-hero__inner">
       <p class="section-label">Ventures</p>
       <h1>Five businesses.<br />One <span class="accent">mission</span>.</h1>
       <p class="page-hero__desc">Every venture exists to serve the same purpose — authentic connection, transformation, and raising the vibration of the world around me.</p>
@@ -22,6 +23,7 @@ import Base from '../layouts/Base.astro';
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
       </div>
       <div class="venture-detail__content">
+        <img src="/images/venture-bistro.png" alt="" class="venture-detail__img" aria-hidden="true" />
         <h2>Finnish Bistro</h2>
         <p class="venture-detail__role">Where it all started — community institution</p>
         <p>A St. Paul staple. Finnish Bistro has been serving the community for years — great food, great people, and the kind of atmosphere that makes you want to stay longer than you planned. It's where neighbors become friends and where Sandra's philosophy of human-first business lives in every detail.</p>
@@ -40,6 +42,7 @@ import Base from '../layouts/Base.astro';
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
       </div>
       <div class="venture-detail__content">
+        <img src="/images/venture-podcast.png" alt="" class="venture-detail__img" aria-hidden="true" />
         <h2>A Better Question</h2>
         <p class="venture-detail__role">The attention engine — podcast &middot; content platform</p>
         <p>The podcast about the questions we avoid, the conversations we need, and the relationships that define our lives. After twenty years of coaching, Sandra is taking the questions that have transformed thousands of lives and putting them on the air.</p>
@@ -58,6 +61,7 @@ import Base from '../layouts/Base.astro';
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </div>
       <div class="venture-detail__content">
+        <img src="/images/venture-happy-class.png" alt="" class="venture-detail__img" aria-hidden="true" />
         <h2>The Happy Class</h2>
         <p class="venture-detail__role">The life's work — product &middot; passion &middot; purpose</p>
         <p>A DIY alternative to couples counseling. Not for broken relationships — for couples who are good but want to be great. The Happy Class is a physical product that couples do together, built on twenty years of Sandra's coaching expertise.</p>
@@ -77,6 +81,7 @@ import Base from '../layouts/Base.astro';
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </div>
       <div class="venture-detail__content">
+        <img src="/images/venture-resonance.png" alt="" class="venture-detail__img" aria-hidden="true" />
         <h2>Resonance Den</h2>
         <p class="venture-detail__role">The sacred space — crystals &middot; meditation &middot; community</p>
         <p>A curated collection of crystals, gemstones, and sacred space in St. Paul. Resonance Den is part retail, part community hub. The meditation room is offered free to the community — prayer groups, 12-step meetings, meditation circles. Everyone is welcome.</p>
@@ -94,6 +99,7 @@ import Base from '../layouts/Base.astro';
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </div>
       <div class="venture-detail__content">
+        <img src="/images/venture-coaching.jpg" alt="" class="venture-detail__img" aria-hidden="true" />
         <h2>Coaching & Speaking</h2>
         <p class="venture-detail__role">The original practice — 20+ years &middot; transformation &middot; truth</p>
         <p>Trained under Iyanla Vanzant on the Oprah Winfrey Network. Over two decades of sitting across from people in the moments that matter most — when they realize the life they built isn't the life they want, and they decide to do something about it.</p>
@@ -107,6 +113,27 @@ import Base from '../layouts/Base.astro';
 <style>
   .page-hero {
     padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+    position: relative;
+  }
+
+  .page-hero--image {
+    background-color: var(--espresso);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(44, 29, 18, 0.82) 0%, rgba(44, 29, 18, 0.55) 100%);
+    z-index: 1;
+  }
+
+  .page-hero__inner {
+    position: relative;
+    z-index: 2;
   }
 
   .page-hero h1 {
@@ -122,6 +149,24 @@ import Base from '../layouts/Base.astro';
   }
 
   .accent { color: var(--citrine); }
+
+  /* Venture image */
+  .venture-detail__img {
+    width: 100%;
+    height: 520px;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    display: block;
+    margin-bottom: 1.75rem;
+    box-shadow: 0 8px 28px rgba(44, 29, 18, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .venture-detail__img {
+      height: 360px;
+    }
+  }
 
   /* Venture Detail */
   .venture-detail {

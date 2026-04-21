@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 
 // Fetch episodes from Transistor RSS feed at build time
 // Replace FEED_URL with Sandra's actual Transistor RSS feed URL
-const FEED_URL = 'https://feeds.transistor.fm/a-better-question';
+const FEED_URL = 'https://feeds.transistor.fm/a-better-question-with-sandra-weise';
 let episodes: Array<{title: string; date: string; description: string; link: string; duration: string; episodeUrl: string}> = [];
 
 try {
@@ -64,8 +64,9 @@ function formatDate(dateStr: string): string {
   jsonLd={jsonLd}
 >
   <!-- Hero -->
-  <section class="page-hero bg-espresso">
-    <div class="container">
+  <section class="page-hero page-hero--image" style={`background-image: url('/images/podcast-hero.png');`}>
+    <div class="page-hero__overlay" aria-hidden="true"></div>
+    <div class="container page-hero__inner">
       <p class="section-label">Podcast</p>
       <h1>A Better <span class="accent">Question</span></h1>
       <p class="page-hero__desc">The questions we avoid. The conversations we need. The relationships that define our lives.</p>
@@ -83,13 +84,17 @@ function formatDate(dateStr: string): string {
   <section class="section bg-linen">
     <div class="container--narrow mx-auto" style="padding: 0 1.5rem;">
       <h2 class="text-center" style="margin-bottom: var(--space-md);">Latest Episode</h2>
-      <!-- Replace SHOW_ID with actual Transistor show ID -->
       <div class="player-embed">
-        <div class="player-embed__placeholder">
-          <p>Transistor player embed</p>
-          <p style="font-size: 0.8125rem; margin-top: 0.5rem;">Replace SHOW_ID in the source code with your Transistor show ID</p>
-          <!-- <iframe src="https://share.transistor.fm/e/SHOW_ID/latest" width="100%" height="180" frameborder="0" scrolling="no" seamless="true" style="border-radius: 12px;"></iframe> -->
-        </div>
+        <iframe
+          src="https://share.transistor.fm/e/a-better-question-with-sandra-weise/latest"
+          width="100%"
+          height="180"
+          frameborder="0"
+          scrolling="no"
+          seamless
+          title="A Better Question — Latest Episode"
+          style="border-radius: 12px; display: block; border: 0;"
+        ></iframe>
       </div>
     </div>
   </section>
@@ -97,6 +102,9 @@ function formatDate(dateStr: string): string {
   <!-- Episode List -->
   <section class="section bg-cream">
     <div class="container">
+      <div class="episodes-accent-wrap">
+        <img src="/images/podcast-accent.png" alt="" class="episodes-accent" aria-hidden="true" />
+      </div>
       <div class="episodes-header">
         <h2>All Episodes</h2>
         <p class="episodes-count">{episodes.length > 0 ? `${episodes.length} episodes` : ''}</p>
@@ -151,6 +159,27 @@ function formatDate(dateStr: string): string {
 <style>
   .page-hero {
     padding: calc(72px + var(--space-xl)) 0 var(--space-xl);
+    position: relative;
+  }
+
+  .page-hero--image {
+    background-color: var(--espresso);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(44, 29, 18, 0.85) 0%, rgba(44, 29, 18, 0.6) 100%);
+    z-index: 1;
+  }
+
+  .page-hero__inner {
+    position: relative;
+    z-index: 2;
   }
 
   .page-hero h1 {
@@ -166,6 +195,27 @@ function formatDate(dateStr: string): string {
   }
 
   .accent { color: var(--citrine); }
+
+  /* Episodes accent image */
+  .episodes-accent-wrap {
+    margin-bottom: 2.5rem;
+  }
+
+  .episodes-accent {
+    width: 100%;
+    height: 420px;
+    max-height: 50vh;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    display: block;
+    box-shadow: 0 8px 28px rgba(44, 29, 18, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .episodes-accent {
+      height: 300px;
+    }
+  }
 
   .btn--on-dark {
     color: var(--linen);
